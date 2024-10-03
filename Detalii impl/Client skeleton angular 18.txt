@@ -1,0 +1,51 @@
+SPA - single page application, adica index.html
+
+in index.html incarcam app-root
+
+Diferenta fata de fostul angular Standalone components
+
+.html = component template
+.ts   = component file
+
+app.config.ts - contine configuratia aplicatiei
+app.routes.ts - folosit pentru rutare
+angular.json  - 
+
+
+
+Dependency injection s-a modificat, inainte cream un constructor care primea ca si parametru ce voiam sa injectam.
+Acum este o functie de inject.
+
+
+
+Este prea devreme sa faci un httprequest in constructorul unei componente.
+	De aceea componenta va implementa interfata OnInit si va avea acces la metoda ngOnInit care se apeleaza dupa constructor
+
+
+
+Requesturile in angular returneaza un Observable care sunt "lazy", nu se intampla nimic cu ele daca nu dam subscribe la ele.
+pentru a observa un observable va trebui sa dam subscribe, in metoda subscribe specificam ce vrem sa facem
+		next: callback function care specifica ce vrem sa facem cu datele returnate
+		error: callback function ce se intampla daca apare un error
+		complete: callback function ce se intampla dupa ce s-a finalizat request-ul
+HttpRequesturile mereu se completeaza si atunci cand se completeaza nu mai suntem subscribed la observable-ul returnat de response.
+
+
+
+	pipe() ne da acces la rxjs operators(ne permite sa facem ceva cu observable inainte ca componenta sa subscrie la ea)
+		folosim in service
+		in componenta facem subscribe la acel observable
+
+
+
+CORS - Browser security feature
+	-previne browserul de a descarca date de la un server in care nu are incredere
+	-api-ul trebuie sa adauge un header in response pentru ca browserul sa permita
+	-in program.cs adaugam un service AddCors() si un 
+		       adaugam un middleware UseCors() care primeste o expresie lambda ca parametru in care specificam ce sa permita si de unde.
+
+
+
+Pachetele NPM le instalam in proiectul client, nu in solutie
+
+	
