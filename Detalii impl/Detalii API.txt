@@ -1,0 +1,5 @@
+[ApiController] permite autobinding la parametri din request
+
+Daca trimitem parametrii prin query string, in endpoint ii vom avea ca argumente in metoda
+Putem specifica folosind [FromBody] sau [FromQuery]
+Daca trimitem parametrii ca obiecte, by default va cauta in body-ul request-ului
