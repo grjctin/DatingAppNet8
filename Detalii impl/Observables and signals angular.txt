@@ -1,0 +1,15 @@
+Observables
+	standard pentru async data
+	lazy
+	trebuie subscris la ele
+	putem folosi rxjs pentru a folosi diferiti operatori pe date
+	Nu trebuie unsubscribe la observables provenite din http request
+	
+Async pipe
+	folosit in template
+	subscribe si unsubscribe automat 
+
+Signals
+	bune pentru state management
+	simple
+	
