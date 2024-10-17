@@ -23,3 +23,5 @@ Optiuni de lifetime a unui service
 	Singleton: Serviciile se creaza prima data cand sunt cerute iar dupa se va folosi exact aceeasi instanta a servicilui (bun pentru cache)
 	Transient: Serviciile se creaza de fiecare data cand sunt cerute (prea scurt pentru autentificare
 	Scoped: Serviciile se creaza o data pentru fiecare client request	
+
+Functia CalculateAge este o metoda de extensie a DateOnly ca sa putem folosi "user.DateOfBirth.CalculateAge()"
