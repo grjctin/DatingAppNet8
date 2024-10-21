@@ -25,3 +25,7 @@ Optiuni de lifetime a unui service
 	Scoped: Serviciile se creaza o data pentru fiecare client request	
 
 Functia CalculateAge este o metoda de extensie a DateOnly ca sa putem folosi "user.DateOfBirth.CalculateAge()"
+
+
+Relatii Entity Framework
+
