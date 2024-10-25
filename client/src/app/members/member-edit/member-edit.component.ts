@@ -5,11 +5,12 @@ import { MembersService } from '../../_services/members.service';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { PhotoEditorComponent } from "../photo-editor/photo-editor.component";
 
 @Component({
   selector: 'app-member-edit',
   standalone: true,
-  imports: [TabsModule, FormsModule],
+  imports: [TabsModule, FormsModule, PhotoEditorComponent],
   templateUrl: './member-edit.component.html',
   styleUrl: './member-edit.component.css'
 })
@@ -48,5 +49,15 @@ export class MemberEditComponent implements OnInit {
     })   
     //reseteaza formularul cu valorile actualizate
     this.editForm?.reset(this.member);
+  }
+
+  onMemberChange(event: Member) {
+    //in child component avem un output prop care 
+    //emite un event atunci cand member-ul primit ca
+    //input se modifica, respectiv cand adauga o 
+    //noua poza. Event-ul va fi de tip member si va 
+    //contine member-ul actualizat
+    console.log("onMemberChange() member-edit.ts")
+    this.member = event;
   }
 }
