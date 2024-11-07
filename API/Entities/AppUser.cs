@@ -20,13 +20,6 @@ public class AppUser
     public required string City { get; set; }
     public required string Country { get; set; }
     public List<Photo> Photos { get; set; } = [];
-
-    //Vrem sa selectam din tabela Users doar prop care se regasesc in MemberDto
-    //Pentru ca automappe-ul sa poata seta Age in MemberDto trebuia sa foloseasca 
-    //GetAge() si automat trebuia sa aduca tot AppUser-ul din db
-
-    // public int GetAge()
-    // {
-    //     return DateOfBirth.CalculateAge();
-    // }
+    public List<UserLike> LikedByUsers { get; set; } =   [];
+    public List<UserLike> LikedUsers { get; set; } = [];
 }
