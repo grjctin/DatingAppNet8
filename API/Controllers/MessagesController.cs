@@ -22,17 +22,17 @@ public class MessagesController(IMessageRepository messageRepository,
             return BadRequest("You cannot message yourself");
 
         var sender = await userRepository.GetUserByUsernameAsync(username);
-        var recpient = await userRepository.GetUserByUsernameAsync(createMessageDto.RecipientUsername);
+        var recipient = await userRepository.GetUserByUsernameAsync(createMessageDto.RecipientUsername);
 
-        if (recpient == null || sender == null)
+        if (recipient == null || sender == null || sender.UserName == null || recipient.UserName == null)
             return BadRequest("Cannot send message at this time");
 
         var message = new Message
         {
             Sender = sender,
-            Recipient = recpient,
+            Recipient = recipient,
             SenderUsername = sender.UserName,
-            RecipientUsername = recpient.UserName,
+            RecipientUsername = recipient.UserName,
             Content = createMessageDto.Content
         };
 
