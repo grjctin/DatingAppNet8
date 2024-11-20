@@ -16,7 +16,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 })
 export class MessagesComponent implements OnInit{
   messageService = inject(MessageService);
-  container = 'Outbox';
+  container = 'Inbox';
   pageNumber = 1;
   pageSize = 5;
 
@@ -31,7 +31,7 @@ export class MessagesComponent implements OnInit{
     this.loadMessages();
   }
 
-  loadMessages() {
+  loadMessages() {    
     this.messageService.getMessages(this.pageNumber, this.pageSize, this.container);
   }
 
