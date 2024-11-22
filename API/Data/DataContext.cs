@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Data;
 
-public class DataContext(DbContextOptions options) : 
-    IdentityDbContext<AppUser, AppRole, int, IdentityUserClaim<int>, 
+public class DataContext(DbContextOptions options) :
+    IdentityDbContext<AppUser, AppRole, int, IdentityUserClaim<int>,
     AppUserRole, IdentityUserLogin<int>, IdentityRoleClaim<int>,
     IdentityUserToken<int>>(options)
 {
@@ -42,10 +42,10 @@ public class DataContext(DbContextOptions options) :
             .OnDelete(DeleteBehavior.Cascade);
 
         builder.Entity<UserLike>()
-        .HasOne(s => s.TargetUser)
-        .WithMany(l => l.LikedByUsers)
-        .HasForeignKey(s => s.TargetUserId)
-        .OnDelete(DeleteBehavior.Cascade);
+            .HasOne(s => s.TargetUser)
+            .WithMany(l => l.LikedByUsers)
+            .HasForeignKey(s => s.TargetUserId)
+            .OnDelete(DeleteBehavior.NoAction);
 
         builder.Entity<Message>()
             .HasOne(x => x.Recipient)

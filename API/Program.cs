@@ -1,3 +1,4 @@
+using API.Controllers;
 using API.Data;
 using API.Entities;
 using API.Extensions;
@@ -23,9 +24,13 @@ app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrig
 app.UseAuthentication(); //trebuie autentificat inainte de a fi autorizat
 app.UseAuthorization();
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.MapControllers();
 app.MapHub<PresenceHub>("hubs/presence");
 app.MapHub<MessageHub>("hubs/message");
+app.MapFallbackToController("Index", "Fallback");
 
 //pentru seed baza de date
 //trebuie sa accesam un service
