@@ -10,23 +10,25 @@ import { FormsModule, NgForm } from '@angular/forms';
   templateUrl: './member-messages.component.html',
   styleUrl: './member-messages.component.css'
 })
-export class MemberMessagesComponent implements AfterViewChecked{
-  
+export class MemberMessagesComponent implements AfterViewChecked {
+
   @ViewChild('messageForm') messageForm?: NgForm;
   @ViewChild('scrollMe') scrollContainer?: any;
   messageService = inject(MessageService);
   username = input.required<string>();
   //messages = input.required<Message[]>();
   messageContent = '';
+  loading = false;
   //output prop pe care emitem mesajul pentru ca in 
   //componenta parinte sa actualizam signal-ul messages
   //updateMessages = output<Message>();
 
   sendMessage() {
+    this.loading = true;
     this.messageService.sendMessage(this.username(), this.messageContent).then(() => {
       this.messageForm?.reset();
       this.scrollToBottom();
-    })
+    }).finally(() => this.loading = false);
     //pre signalR
     // this.messageService.sendMessage(this.username(), this.messageContent).subscribe({
     //   next: message => {
@@ -40,7 +42,7 @@ export class MemberMessagesComponent implements AfterViewChecked{
   }
 
   private scrollToBottom() {
-    if(this.scrollContainer) {
+    if (this.scrollContainer) {
       this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
     }
   }
